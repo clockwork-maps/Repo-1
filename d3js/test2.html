@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Logo Practice</title>
+    <link rel="stylesheet" href="css/bulma.min.css">
+    <link rel="stylesheet" href="css/svg.css">
+    <script src="js/d3.v7.min.js"></script>    
+</head>
+<body>
+    <nav class="navbar has-background-light" role="navigation" aria-label="main navigation">
+        <div class="navbar-brand"></div>
+        <div class="navbar-menu">
+            <div class="navbar-start">
+                <div class="navbar-item has-dropwdown is-hoverable">
+                    <a href="" class="navbar-link">Other Posts</a>
+                    <div class="navbar-dropdown">
+                        <a href="test1.html" class="navbar-item">First Post: D3 Basics</a>
+                        <a href="test3.html" class="navbar-item">D3 Shape Practice</a>                    
+                    </div>
+                </div>
+            </div>
+            <div class="navbar-item"><h4 class="title is-4 is-family-secondary">D3 Dev blog</h4></div>
+            <div class="navbar-end">
+                <div class="navbar-item has-dropwdown is-hoverable">
+                    <a href="" class="navbar-link">Resources</a>
+                    <div class="navbar-dropdown">
+                        <a href="https://www.d3indepth.com/" target="_blank" class="navbar-item">D3 In-Depth</a>
+                        <a href="https://observablehq.com/@d3/gallery" target="_blank" class="navbar-item">D3 Example Gallery</a>
+                        <a href="https://observablehq.com/collection/@d3/d3-tile" target="_blank" class="navbar-item">D3 Tile Gallery</a>
+                        <a href="https://d3-graph-gallery.com/" target="_blank" class="navbar-item">Graph Gallery</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+    <section class="section">
+        <div class="container content">
+            <h2 class="title is-2 has-text-centered">Logo Design</h2>
+            <p>For the second D3 exercise, we'll try our hand at logo design. We're not going to be desinging a new logo, but rather recreating the logo of Norrköping (my city). The logo didn't come out quite like you might see it <a href="https://www.norrkoping.se/images/18.5ff942e1184b3f255e22d141/1485331297688/Let's%20create%20Norrk%C3%B6ping.png" target="_blank">here</a> the colors came out close enough, I think, to be indistinguishable without the real copy right next to you.</p>
+            <p>The logo will be followed by a preformatted section showing how one draws the logo. I'll leave in some functions I used when drawing the logo in the preformatted section, but if one inspects the source code of the page (or indeed, looks at the image) one can see those functions are no longer there.</p>
+            <svg id="logo"></svg>
+            <pre>
+let logo = d3.select('#logo');
+logo.style('width', '400px').style('height', '400px').style('border', '1px solid rgba(0,0,0,0.1)').style('margin-left', '30%').style('margin-right', '30%');
+function NKLBuilder(leg, target){
+    let canvas = d3.select(target);
+    let bsize = leg/11;
+    let yellowList = ['0 0','0 1','1 0','1 1','5 0','5 1'];
+    let orangeList = ['2 0','2 1','5 2','5 3','6 2','6 3'];
+    let pinkList = ['1 4','4 2'];
+    let redList1 = ['0 2','0 3','1 2','1 3','8 3'];
+    let redList2 = ['0 5','2 2','2 3','3 2','3 3'];
+    let purpleList1 = ['3 4'];
+    let purpleList2 = ['4 4'];
+    let blueList1 = ['1 7','5 5'];
+    let blueList2 = ['4 5','8 5'];
+    let blueList3 = ['3 5','5 6','1 8'];
+    let blueList4 = ['2 8','3 6','3 7','4 6','4 7'];
+    let greenList1 = ['6 6','6 7','7 6','7 7','9 10'];
+    let greenList2 = ['1 9', '7 9'];
+    let greenList3 = ['8 8'];
+    let blackList = ['5 8'];
+    for(let i=0;&#60;11;i++){
+        for (let j=0;&#60;10;j++){
+            let rx = i * bsize;
+            let ry = j * bsize;
+            let box = canvas.append('rect');
+            box.attr('transform', `translate(${rx},${ry})`).attr('width',bsize+1).attr('height',bsize+1).attr('stroke', 'rgba(0,0,0,0.1)').attr('fill','#fff');
+            if(yellowList.includes(`${j} ${i}`)) box.classed('yellow1', true);
+            else if(orangeList.includes(`${j} ${i}`)) box.classed('orange1', true);
+            else if(pinkList.includes(`${j} ${i}`)) box.classed('pink1', true);
+            else if(redList1.includes(`${j} ${i}`)) box.classed('red1', true);
+            else if(redList2.includes(`${j} ${i}`)) box.classed('red2', true);
+            else if(purpleList1.includes(`${j} ${i}`)) box.classed('purple1', true);
+            else if(purpleList2.includes(`${j} ${i}`)) box.classed('purple2', true);
+            else if(blueList1.includes(`${j} ${i}`)) box.classed('blue1', true);
+            else if(blueList2.includes(`${j} ${i}`)) box.classed('blue2', true);
+            else if(blueList3.includes(`${j} ${i}`)) box.classed('blue3', true);
+            else if(blueList4.includes(`${j} ${i}`)) box.classed('blue4', true);
+            else if(greenList1.includes(`${j} ${i}`)) box.classed('green1', true);
+            else if(greenList2.includes(`${j} ${i}`)) box.classed('green2', true);
+            else if(greenList3.includes(`${j} ${i}`)) box.classed('green3', true);
+            else if(blackList.includes(`${j} ${i}`)) box.classed('black1', true);
+            else box.classed('whites', true);
+            let ltext = canvas.append('text');
+            ltext.attr('transform', `translate(${rx},${ry})`).html(`${j-1} ${i}`);
+        }
+    }
+    let yellow1 = d3.selectAll('.yellow1');
+    yellow1.each(function(){
+        let box = d3.select(this);
+        box.attr('fill', '#FFD300');
+    });
+    let orange1 = d3.selectAll('.orange1');
+    orange1.each(function(){
+        let box = d3.select(this);
+        box.attr('fill', '#FF9000');
+    });
+    let pink1 = d3.selectAll('.pink1');
+    pink1.each(function(){
+        let box = d3.select(this);
+        box.attr('fill','#D40070')
+    })
+    let red1 = d3.selectAll('.red1');
+    red1.each(function(){
+        let box = d3.select(this);
+        box.attr('fill', '#F90012');
+    });
+    let red2 = d3.selectAll('.red2');
+    red2.each(function(){
+        let box = d3.select(this);
+        box.attr('fill', '#C10029');
+    });
+    let purple1 = d3.selectAll('.purple1');
+    purple1.each(function(){
+        let box = d3.select(this);
+        box.attr('fill', '#3C036D');
+    });
+    let purple2 = d3.selectAll('.purple2');
+    purple2.each(function(){
+        let box = d3.select(this);
+        box.attr('fill', '#67028B');
+    });
+    let blue1 = d3.selectAll('.blue1');
+    blue1.each(function(){
+        let box = d3.select(this);
+        box.attr('fill', '#5A9EDB');
+    });
+    let blue2 = d3.selectAll('.blue2');
+    blue2.each(function(){
+        let box = d3.select(this);
+        box.attr('fill', '#065EAC');
+    });
+    let blue3 = d3.selectAll('.blue3');
+    blue3.each(function(){
+        let box = d3.select(this);
+        box.attr('fill', '#031856');
+    });
+    let blue4 = d3.selectAll('.blue4');
+    blue4.each(function(){
+        let box = d3.select(this);
+        box.attr('fill', '#0B2A86');
+    });
+    let green1 = d3.selectAll('.green1');
+    green1.each(function(){
+        let box = d3.select(this);
+        box.attr('fill', '#97CB00');
+    });
+    let green2 = d3.selectAll('.green2');
+    green2.each(function(){
+        let box = d3.select(this);
+        box.attr('fill', '#415700');
+    });
+    let green3 = d3.selectAll('.green3');
+    green3.each(function(){
+        let box = d3.select(this);
+        box.attr('fill', '#114000');
+    });
+    let black1 = d3.selectAll('.black1');
+    black1.each(function(){
+        let box = d3.select(this);
+        box.attr('fill','#141414')
+    });
+}
+NKLBuilder(400,'#logo');
+            </pre>
+
+        </div>
+    </section>
+    <script src="js/brand.js"></script>
+    <script src="js/basic2.js"></script>
+</body>
+</html>

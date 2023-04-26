@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Shape Practice</title>
     <link rel="stylesheet" href="css/bulma.min.css">
     <link rel="stylesheet" href="css/svg.css">
     <script src="js/d3.v7.min.js"></script> 
@@ -17,7 +17,8 @@
                 <div class="navbar-item has-dropwdown is-hoverable">
                     <a href="" class="navbar-link">Other Posts</a>
                     <div class="navbar-dropdown">
-                        <a href="test1.html" class="navbar-item">First Post: D3 Basics</a>                        
+                        <a href="test1.html" class="navbar-item">First Post: D3 Basics</a>
+                        <a href="test2.html" class="navbar-item">Drawing a Logo via D3</a>                
                     </div>
                 </div>
                 <div class="navbar-item has-dropwdown is-hoverable">
@@ -45,6 +46,7 @@
                         <a href="https://www.d3indepth.com/" target="_blank" class="navbar-item">D3 In-Depth</a>
                         <a href="https://observablehq.com/@d3/gallery" target="_blank" class="navbar-item">D3 Example Gallery</a>
                         <a href="https://observablehq.com/collection/@d3/d3-tile" target="_blank" class="navbar-item">D3 Tile Gallery</a>
+                        <a href="https://d3-graph-gallery.com/" target="_blank" class="navbar-item">Graph Gallery</a>
                     </div>
                 </div>
             </div>
@@ -55,7 +57,7 @@
             <h2 class="title is-2 has-text-centered">D3 Shape Practice</h2>
             <p>Lines and shapes will be drawn below, followed by the preformatted code that created them. Shapes are expansions on those shown <a href="https://www.d3indepth.com/shapes/" target="_blank">on this d3indepth page</a>.</p>
             <p>As this document took some time in its creation, methods and standards changed somewhat during development. As the required complexity increased, formatting went closer towards the D3 standard.</p>
-            <h4 id="title1" class="title is-4 has-text-centered">Redraw Line on Click</h4>
+            <h4 class="title is-4 has-text-centered anchor"><span id="title1"></span>Redraw Line on Click</h4>
             <div class="svgcontainer"><svg id="chart1" class="svgstd"></svg></div>
             <p id="string1" class="has-text-centered has-text-grey"></p>
             <pre>
@@ -106,8 +108,8 @@ chart1.on('click', function(){
 });
 chart1.style('cursor','pointer');
                 </pre>
-                <br><br>
-                <h4 id="title2" class="title is-4 has-text-centered">Redraw Curved Line on Click</h4>
+                <br>
+                <h4 class="title is-4 has-text-centered anchor"><span id="title2"></span>Redraw Curved Line on Click</h4>
                 <div class="svgcontainer"><svg id="chart2" class="svgstd"></svg></div>
                 <p id="string2" class="has-text-centered has-text-grey"></p>
                 <pre>
@@ -136,8 +138,8 @@ chart2.on('click', function(){
 });
 chart2.style('cursor','pointer');
                 </pre>
-                <br><br>
-                <h4 id="title3" class="title is-4 has-text-centered">Redraw Radial Line on Click</h4>
+                <br>
+                <h4 class="title is-4 has-text-centered anchor"><span id="title3"></span>Redraw Radial Line on Click</h4>
                 <h4 class="subtitle is-6 has-text-centered"><a href="https://observablehq.com/@d3/d3-lineradial" target="_blank"><i>documentation of D3 function</i></a></h4>
                 <div class="svgcontainer"><svg id="chart3" class="svgstd"></svg></div>
                 <p id="string3" class="has-text-centered has-text-grey"></p>
@@ -198,7 +200,8 @@ chart3.on('click', function(){
 });
 chart3.style('cursor','pointer');
             </pre>
-            <h4 id="title4" class="title is-4 has-text-centered">Redraw Area on Click</h4>
+            <br>
+            <h4 class="title is-4 has-text-centered anchor"><span id="title4"></span>Redraw Area on Click</h4>
             <h4 class="subtitle is-6 has-text-centered"><a href="https://d3-graph-gallery.com/area" target="_blank"><i>graph-gallery example</i></a></h4>
             <div class="svgcontainer"><svg id="chart4" class="svgstd"></svg></div>
             <br>
@@ -241,7 +244,8 @@ chart4.on('click', function(){
 });
 chart4.style('cursor', 'pointer');
             </pre>
-            <h4 id="title5" class="title is-4 has-text-centered">Redraw Area on Click II</h4>
+            <br>
+            <h4 class="title is-4 has-text-centered anchor"><span id="title5"></span>Redraw Area on Click II</h4>
             <div class="svgcontainer"><svg id="chart5" class="svgstd"></svg></div>
             <br>
             <pre>
@@ -285,7 +289,8 @@ chart5.on('click', function(){
 });
 chart5.style('cursor', 'pointer');
             </pre>
-            <p id="title6">From here one can observe a shift from array to JSON/object based storage of data for the randomly generated shapes if properties need to be referenced. This is because when declaring parameters for the d3 path generator functions<span class="is-family-code has-text-white has-background-black ml-1 mr-1"> return d.x </span> is easier to read than<span class="is-family-code has-text-white has-background-black ml-1 mr-1"> return d[0] </span>.</p>
+            <br>
+            <p class="anchor"><span id="title6"></span>From here one can observe a shift from array to JSON/object based storage of data for the randomly generated shapes if properties need to be referenced. This is because when declaring parameters for the d3 path generator functions<span class="is-family-code has-text-white has-background-black ml-1 mr-1"> return d.x </span> is easier to read than<span class="is-family-code has-text-white has-background-black ml-1 mr-1"> return d[0] </span>.</p>
             <h4 class="title is-4 has-text-centered">Redraw Bounded Area on Click</h4>
             <div class="svgcontainer"><svg id="chart6" class="svgstd"></svg></div>
             <br>
@@ -397,7 +402,7 @@ chart6.on('click', function(){
 chart6.style('cursor', 'pointer');
             </pre>
             <br>
-            <p id="title7">From here on, area fills will be done via svg pattern fill. This is partially due to either SVG not having or me not being aware of a standard that would allow one to draw a line that strictly surrounds the outer edge of the SVG, and partially due to patterns being a useful property to understand.</p>
+            <p class="anchor"><span id="title7"></span>From here on, area fills will be done via svg pattern fill. This is partially due to either SVG not having or me not being aware of a standard that would allow one to draw a line that strictly surrounds the outer edge of the SVG, and partially due to patterns being a useful property to understand.</p>
             <p>One thing to note with D3 generated SVG, and possibly more types of dynamically generated SVG, is that the<span class="is-family-code has-text-white has-background-black ml-1 mr-1"> &#60;defs&#62; </span> elements and their component patterns need to be dynamically generated as well. Pregenerated patterns will read as null without throwing any errors. Dynamically generated patterns seem to be able to be referenced from other SVGs once defined, as can be seen with the patterns defined in the Stacked Chart being referenced from Stacked Area.</p>
             <h4 class="title is-4 has-text-centered">Redraw Radial Area on Click</h4>
             <h4 class="subtitle is-6 has-text-centered"><a href="https://developer.mozilla.org/en-US/docs/Web/SVG/Element/pattern" target="_blank"><i>MDN pattern element notation</i></a></h4>
@@ -470,7 +475,7 @@ chart7.on('click', function(){
 chart7.style('cursor', 'pointer');
             </pre>
             <br>
-            <h4 id="title8" class="title is-4 has-text-centered">Redraw Stacked Chart on Click</h4>
+            <h4 class="title is-4 has-text-centered anchor"><span id="title8"></span>Redraw Stacked Chart on Click</h4>
             <div class="svgcontainer"><svg id="chart8" class="svgstd"></svg></div>
             <br>
             <pre>
@@ -560,7 +565,7 @@ chart8.on('click', function(){
 chart8.style('cursor','pointer');
             </pre>
             <br>
-            <h4 id="title9" class="title is-4 has-text-centered">Redraw Stacked Area on Click</h4>
+            <h4 class="title is-4 has-text-centered anchor"><span id="title9"></span>Redraw Stacked Area on Click</h4>
             <div class="svgcontainer"><svg id="chart9" class="svgstd"></svg></div>
             <br>
             <pre>
@@ -633,7 +638,7 @@ chart9.on('click', function(){
 chart9.style('cursor', 'pointer');
             </pre>
             <br>
-            <p id="title10">The positioning of the<span class="is-family-code has-text-white has-background-black ml-1 mr-1"> &#60;g&#62; </span> element should be perfectly centered. If the translation arguments are incorrect, it's a result of my lack of understanding of D3's yscale functions.</p>
+            <p class="anchor"><span id="title10"></span>The positioning of the<span class="is-family-code has-text-white has-background-black ml-1 mr-1"> &#60;g&#62; </span> element should be perfectly centered. If the translation arguments are incorrect, it's a result of my lack of understanding of D3's yscale functions.</p>
             <p>Also, see the new pattern definition for insight on how to put images inside your svg patterns.</p>
             <h4 class="title is-4 has-text-centered">Redraw Offset Stacked Area on Click</h4>
             <div class="svgcontainer"><svg id="chart10" class="svgstd"></svg></div>
@@ -727,7 +732,7 @@ chart10.on('click', function(){
 chart10.style('cursor','pointer');
             </pre>
             <br>
-            <p id="title11">Here we have a new pattern definition using the same image we had with patern 5. The new definition is necessary because the logic used defining pattern 5 displays clipping issues when passed into non-rectangular shapes. We get some clipping of the image in large arc segments with this implementation, but without this method we get large segments of empty space—a much worse form of clipping.</p>
+            <p class="anchor"><span id="title11"></span>Here we have a new pattern definition using the same image we had with patern 5. The new definition is necessary because the logic used defining pattern 5 displays clipping issues when passed into non-rectangular shapes. We get some clipping of the image in large arc segments with this implementation, but without this method we get large segments of empty space—a much worse form of clipping.</p>
             <h4 class="title is-4 has-text-centered">Redraw Arc/Pie Area on Click</h4>
             <div class="svgcontainer"><svg id="chart11" class="svgstd"></svg></div>
             <br>
