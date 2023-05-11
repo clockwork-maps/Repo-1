@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>D3 Axis Practice</title>
+    <link rel="stylesheet" href="css/bulma.min.css">
+    <link rel="stylesheet" href="css/svg.css">
+    <link rel="stylesheet" href="css/axes.css">
+    <script src="js/d3.v7.min.js"></script> 
+    <script src="js/stdUtils.js"></script> 
+</head>
+<body>
+    <nav class="navbar has-background-light" role="navigation" aria-label="main navigation">
+        <div class="navbar-brand"></div>
+        <div class="navbar-menu">
+            <div class="navbar-start">
+                <div class="navbar-item has-dropwdown is-hoverable">
+                    <a href="" class="navbar-link">Other Posts</a>
+                    <div class="navbar-dropdown">
+                        <a href="test1.html" class="navbar-item">First Post: D3 Basics</a>
+                        <a href="test2.html" class="navbar-item">Drawing a Logo via D3</a>
+                        <a href="test3.html" class="navbar-item">D3 Shape Practice</a>
+                    </div>
+                </div>
+                <div class="navbar-item has-dropwdown is-hoverable">
+                    <a href="" class="navbar-link">Page Index</a>
+                    <div class="navbar-dropdown">
+                        <a href="test4.html#title1" class="navbar-item">Redraw Basic Scale on Click</a>
+                        <a href="test4.html#title2" class="navbar-item">Redraw Multiple Scales on Click</a>
+                    </div>
+                </div>
+            </div>
+            <div class="navbar-item"><h4 class="title is-4 is-family-secondary">D3 Dev blog</h4></div>
+            <div class="navbar-end">
+                <div class="navbar-item has-dropwdown is-hoverable">
+                    <a href="" class="navbar-link">Resources</a>
+                    <div class="navbar-dropdown">
+                        <a href="https://www.d3indepth.com/" target="_blank" class="navbar-item">D3 In-Depth</a>
+                        <a href="https://observablehq.com/@d3/gallery" target="_blank" class="navbar-item">D3 Example Gallery</a>
+                        <a href="https://observablehq.com/collection/@d3/d3-tile" target="_blank" class="navbar-item">D3 Tile Gallery</a>
+                        <a href="https://d3-graph-gallery.com/" target="_blank" class="navbar-item">Graph Gallery</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+    <section class="section">
+        <div class="container content">
+            <h2 class="title is-2 has-text-centered">D3 Axis Practice</h2>
+            <p>For this entry, we'll be practicing on D3 axis logic, mostly based on entries shown <a href="https://www.d3indepth.com/axes/" target="_blank">on this D3 in Depth page</a>. Examples will be expanded on and/or automated here to both better differentiate them from the source page, and to give a more complete understanding of what arguments/data do what. Examples will be followed by preformatted code.</p>
+            <h4 class="title is-4 has-text-centered anchor"><span id="title1"></span>Redraw Bottom Scale on Click</h4>
+            <div class="svgcontainer"><svg id="chart1" class="svgcscope"></svg></div>
+            <br>
+            <pre>
+let chart1 = d3.select('#chart1');
+function drawBScale(target, stroke='#000',dmin=0,dmax=100, scalar=.8){
+    let chart = d3.select(target);
+    let ctbounds = chart.node().getBoundingClientRect();
+    let ctln = ctbounds.width;
+    let ctht = ctbounds.height;
+    let scale = d3.scaleLinear().domain([dmin, dmax]).range([0, ctln*scalar]);
+    let axis = d3.axisBottom(scale);
+    let bg = chart.append('g');
+    bg.attr('transform',`translate(${ctln*.1},${ctht*.4})`).classed('bAxis', true);
+    bg.call(axis);
+    bg.select('path')
+    .attr('stroke', stroke);
+    bg.selectAll('g')
+    .select('line')
+    .attr('stroke', stroke);
+}
+drawBScale('#chart1', stroke='red');
+function updateBScale(obj){
+    let target = obj.target;
+    let target2 = obj.target2;
+    let dmin = obj.dmin || 0;
+    let dmax = obj.dmax || Math.round(getRA(30,10000));
+    let scalar = obj.scalar || .8;
+    let chart = d3.select(target);
+    let ctbounds = chart.node().getBoundingClientRect();
+    let ctln = ctbounds.width;
+    let scale = d3.scaleLinear().domain([dmin, dmax]).range([0, ctln*scalar]);
+    let axis = d3.axisBottom(scale);
+    let bg = chart.select(target2);
+    bg.transition().duration(750).call(axis);
+    let stroke = window.getComputedStyle(bg.select('path').node()).getPropertyValue('stroke');
+    bg.selectAll('g')
+    .select('line')
+    .attr('stroke', stroke);
+}
+chart1.on('click', function(){
+    updateBScale({target:'#chart1', target2:'.bAxis'});
+});
+chart1.style('cursor', 'pointer');
+            </pre>
+            <h4 class="title is-4 has-text-centered anchor"><span id="title2"></span>Redraw Multiple Scales on Click</h4>
+            <div class="svgcontainer"><svg id="chart2" class="svgstd"></svg></div>
+            <br>
+            <pre>
+let chart2 = d3.select('#chart2');
+chart2.append('g').classed('bAxis', true);
+chart2.append('g').classed('lAxis', true);
+function drawScales(obj){
+    let axes = {'bottom':d3.axisBottom, 'left': d3.axisLeft, 'top':d3.axisTop, 'right':d3.axisRight};
+    let direction = obj.direction || 'bottom';
+    let target = obj.target;
+    let target2 = obj.target2;
+    let dmin = obj.dmin || 0;
+    let dmax = obj.dmax || Math.round(getRA(30,10000));
+    let barscalar = obj.barscalar || .8;
+    let tranD = obj.duration || 0;
+    let chart = d3.select(target);
+    let ctbounds = chart.node().getBoundingClientRect();
+    let ctln = ctbounds.width;
+    let ctht = ctbounds.height;
+    let hbool = direction == 'bottom' || direction == 'top';
+    let rmax = hbool ? ctln*barscalar : ctht*barscalar;
+    let posx = ctln * obj.posxscalar || ctln * .1;
+    let posy = ctht * obj.posyscalar || ctht * .9;
+    let scale = hbool ? d3.scaleLinear().domain([dmin, dmax]).range([0, rmax]) : d3.scaleLinear().domain([dmax, dmin]).range([0, rmax]);
+    let axis = axes[direction](scale);
+    let bg = chart.select(target2);
+    let stroke = obj.stroke || window.getComputedStyle(bg.select('path').node()).getPropertyValue('stroke');
+    bg.attr('transform',`translate(${posx},${posy})`);
+    bg.transition().duration(tranD).call(axis);
+    bg.select('path')
+    .attr('stroke', stroke);
+    bg.selectAll('g')
+    .select('line')
+    .attr('stroke', stroke);
+}
+drawScales({target: '#chart2', target2: '.bAxis', stroke: 'red', dmax: 100});
+drawScales({target: '#chart2', target2: '.lAxis', stroke: 'red', posyscalar: .1, direction: 'left', dmax: 100});
+chart2.on('click', function(){
+    drawScales({target: '#chart2', target2: '.bAxis', duration: 750});
+    drawScales({target: '#chart2', target2: '.lAxis', direction: 'left', posyscalar: .1, duration: 750});
+});
+chart2.style('cursor', 'pointer');
+            </pre>
+            <p class="anchor"><span id="title3"></span>There exist multiple scale functions within d3, and while some scales like<span class="is-family-code has-text-white has-background-black ml-1 mr-1"> scaleSqrt </span> create things similar enough to more common linear scales that it doesn't differentiate much for the sake of example, there exist a few more esoteric scales within d3 that take a full array as the domain argument.</p>
+            <h4 class="title is-4 has-text-centered">Redraw Misc Scales on Click</h4>
+            <div class="svgcontainer"><svg id="chart3" class="svgcscope"></svg></div>
+            <br>
+            <pre>
+let chart3 = d3.select('#chart3');
+chart3.append('g').classed('bAxis', true);
+chart3.append('g').classed('display', true);
+function drawScalesII(obj){
+    let axes = {'bottom':d3.axisBottom, 'left': d3.axisLeft, 'top':d3.axisTop, 'right':d3.axisRight};
+    let scales = {'linear':d3.scaleLinear, 'sqrt':d3.scaleSqrt, 'log':d3.scaleLog, 'time':d3.scaleTime, 'band':d3.scaleBand, 'point':d3.scalePoint};
+    let scaleSelect = obj.scale || 'linear';
+    let direction = obj.direction || 'bottom';
+    let target = obj.target;
+    let target2 = obj.target2;
+    let dmin = obj.dmin || 0;
+    let dmax = obj.dmax || Math.round(getRA(30,10000));
+    let numScale = ['linear','sqrt','log'].indexOf(scaleSelect) + 1;
+    let domArray = obj.domain || ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday']
+    let barDomain = numScale ? [dmin, dmax] : domArray;
+    let barscalar = obj.barscalar || .8;
+    let tranD = obj.duration || 0;
+    let chart = d3.select(target);
+    let ctbounds = chart.node().getBoundingClientRect();
+    let ctln = ctbounds.width;
+    let ctht = ctbounds.height;
+    let hbool = direction == 'bottom' || direction == 'top';
+    let rmax = hbool ? ctln*barscalar : ctht*barscalar;
+    let posx = ctln * obj.posxscalar || ctln * .1;
+    let posy = ctht * obj.posyscalar || ctht * .9;
+    let scale = hbool ? scales[scaleSelect]().domain(barDomain).range([0, rmax]) : scales[scaleSelect]().domain(barDomain.reverse()).range([0, rmax]);
+    let axis = axes[direction](scale);
+    let bg = chart.select(target2);
+    let stroke = obj.stroke || window.getComputedStyle(bg.select('path').node()).getPropertyValue('stroke');
+    bg.attr('transform',`translate(${posx},${posy})`);
+    bg.transition().duration(tranD).call(axis);
+    bg.select('path')
+    .attr('stroke', stroke);
+    bg.selectAll('g')
+    .select('line')
+    .attr('stroke', stroke);
+    let ctext = chart.select('.display');
+    ctext.attr('transform',`translate(${ctln*.9},${ctht*.9})`);
+    if(!!ctext.node().querySelector('.dInfo'))ctext.select('.dInfo')text(scaleSelect);
+    else ctext.append('text').text(scaleSelect).classed('dInfo',true);
+}
+drawScalesII({target: '#chart3', target2:'.bAxis', stroke: 'red', posyscalar: .4, scale: 'band'});
+let num = 5
+let scaleArray = ['time', 'band', 'point'];
+let dates = [new Date(2023, 1, 15), new Date(2023, 1, 25)]
+chart3.on('click', function(){
+    let tScale = scaleArray[num%3];
+    num++;
+    if (tScale == 'time') drawScalesII({target: '#chart3', target2:'.bAxis', stroke: 'red', posyscalar: .4, scale: tScale, domain: dates, duration: 750});
+    else drawScalesII({target: '#chart3', target2:'.bAxis', stroke: 'red', posyscalar: .4, scale: tScale, duration: 750});
+});
+chart3.style('cursor','pointer');
+            </pre>
+        </div>
+    </section>
+    <script src="js/brand2.js"></script>
+    <script src="js/basic4.js"></script>
+</body>
+</html>
