@@ -1,0 +1,35 @@
+article > div  {
+    max-width: 60ch;
+    color: #4a4a4a;
+}
+article {
+    position: relative;
+    width: 800px;
+    margin-inline: auto;
+    border-bottom: 1px solid rgba(0,0,0,0.1);
+    margin-bottom: 1vmin;
+    cursor: pointer;
+    transition: all .5s;
+}
+.preview{
+    position: absolute;
+    border: 1px solid rgba(0,0,0,0.1);
+    transition: border .5s, background-color .5s;
+}
+.block{ display: block;}
+.eventText{
+    position: absolute;
+    opacity: 0;
+    color: rgba(0,0,0,0.5);
+    transition: opacity .5s linear;
+    pointer-events: none;
+}
+article:hover{
+    margin-top: 1vmin;
+    box-shadow: -6px 4px 3.75px 2.8px rgba(0,0,0,0.2);
+}
+article:hover > .preview{ border: 2px dashed rgba(0,0,0,0.1)}
+article:hover > .eventText{ opacity: 1;}
+.preview.demo:hover{
+    background-color: #fdfd96;
+}

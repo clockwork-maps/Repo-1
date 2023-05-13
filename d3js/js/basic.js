@@ -58,19 +58,6 @@ function init(){
         p2.transition().duration(750).style("color", rcolor());
     });
     anchor.node().appendChild(p2.node());
-    let h41 = d3.create('h4');
-    h41.html('This subtitle cycles through Bulma classes!');
-    h41.style("cursor", "pointer");
-    h41.classed('has-text-centered', true);
-    window.h4num = 3;
-    h41.on("click", function(){
-        let bstyles = ['subtitle has-text-centered is-2', 'subtitle has-text-centered is-3', 'subtitle has-text-centered is-4'];
-        let p = window.h4num % 3;
-        window.h4num++;
-        let tstyle = bstyles[p];
-        h41.node().className=tstyle;
-    });
-    anchor.node().appendChild(h41.node());
     let p3 = d3.create('p');
     p3.html('However, what D3 is most famous for is SVG creation and manipulation. Below is a chart drawn with random data.');
     anchor.node().appendChild(p3.node());
@@ -132,7 +119,7 @@ function init(){
     p4.html('As you might have guessed from the cursor, this chart can be reloaded and animated when clicked on. Animation is a particular strength of D3 and can be seen here through the transition of font, background, and bar color; and the changing of bar and label heights.');
     anchor.node().appendChild(p4.node());
     let p5 = d3.create('p');
-    p5.html('However, one can do more than chart animations when harnessing d3: the library is capable of any type of visualization so long as it involves SVG. Below here will be the last visualization in the demo page: a crude simulation of some bubbles floating through water.');
+    p5.html('However, one can do more than chart animations when harnessing d3: the library is capable of any type of visualization so long as it involves SVG. Below here will be the last visualization in this intro page: a crude simulation of some bubbles floating through water.');
     anchor.node().appendChild(p5.node());    
     let svg2 = d3.create('svg');
     svg2.style('height', '600px');
@@ -200,10 +187,10 @@ function init(){
             let bubble = d3.select(this);
             let px = Number(bubble.node().dataset.px);
             let py = Number(bubble.node().dataset.py);
-            let mnx = px-100<30 ? 30 : px-100;
-            let mx = px+100>870 ? 870 : px+100;
-            let mny = py-100<30? 30 : py-100;
-            let my = py+100>430? 430 : py+100; 
+            let mnx = px-100<30?30:px-100;
+            let mx = px+100>870?870:px+100;
+            let mny = py-100<30?30:py-100;
+            let my = py+100>430?430:py+100; 
             let cx = getRA(mnx, mx);
             let cy = getRA(mny, my);
             let cr = getRA(3, 30);
@@ -260,4 +247,7 @@ function init(){
     }
     bDrift();
     setInterval(bDrift, 1250);
+    let p6 = d3.create('p');
+    p6.html('Further entries will be more focused on singular concepts for more abstract exercises or applications. In entries after this one, solutions will most often be posted in page text after examples. If you\'re wondering how this page was animated, check out the <a href="https://github.com/clockwork-maps/Repo-1/blob/main/d3js/js/basic.js" target="_blank">source code</a>.');
+    anchor.node().appendChild(p6.node());
 }

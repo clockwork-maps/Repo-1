@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>D3 blog</title>
+    <link rel="stylesheet" href="css/bulma.min.css">
+    <link rel="stylesheet" href="css/svg.css">
+    <link rel="stylesheet" href="css/axes.css">
+    <link rel="stylesheet" href="css/index.css">
+    <script src="js/d3.v7.min.js"></script> 
+    <script src="js/stdUtils.js"></script> 
+</head>
+<body>
+    <nav class="navbar has-background-light" role="navigation" aria-label="main navigation">
+        <div class="navbar-brand"></div>
+        <div class="navbar-menu">
+            <div class="navbar-start">
+                <div class="navbar-item has-dropwdown is-hoverable">
+                    <a href="" class="navbar-link">Other Blogs</a>
+                    <div class="navbar-dropdown">
+                        <a href="" class="navbar-item">Pending...</a>
+                    </div>
+                </div>
+            </div>
+            <div class="navbar-item"><h4 class="title is-4 is-family-secondary">D3 Dev blog</h4></div>
+            <div class="navbar-end">
+                <div class="navbar-item has-dropwdown is-hoverable">
+                    <a href="" class="navbar-link">Resources</a>
+                    <div class="navbar-dropdown">
+                        <a href="https://www.d3indepth.com/" target="_blank" class="navbar-item">D3 In-Depth</a>
+                        <a href="https://observablehq.com/@d3/gallery" target="_blank" class="navbar-item">D3 Example Gallery</a>
+                        <a href="https://observablehq.com/collection/@d3/d3-tile" target="_blank" class="navbar-item">D3 Tile Gallery</a>
+                        <a href="https://d3-graph-gallery.com/" target="_blank" class="navbar-item">Graph Gallery</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+    <main>        
+        <section class="hero is-small is-primary">
+            <div class="hero-body">
+                <p class="title">D3 Dev Blog Index</p>
+                <p class="subtitle">entries, summaries, and previews</p>
+            </div>
+        </section>
+        <section class="section mt-0">
+            <div class="container content">
+                <a href="test1.html" class="block">
+                    <article>
+                        <div>
+                            <h4 class="title is-4">First Post: D3 Basics</h4>
+                            <p>First post, first time touching D3 in almost 5 years. More loosely formatted and syntaxed than subsequent entries, experimental. Meant to serve as a (re)introduction to D3 to myself and readers.</p>
+                        </div>
+                        <p class="eventText">Click for demo↓</p>
+                        <svg class="preview demo" id="chart1"></svg>
+                    </article>
+                </a>
+                <br>
+                <a href="test2.html" class="block">
+                    <article>
+                        <div>
+                            <h4 class="title is-4">Drawing a Logo via D3</h4>
+                            <p>In this post I go over how one might use D3 to draw a logo, specifically one of the logos used by my home city of Norrköping. Still a bit experiment, contains more non-D3 syntax.</p>
+                        </div>
+                        <svg class="preview" id="chart2"></svg>
+                    </article>
+                </a>
+                <br>
+                <a href="test3.html" class="block">
+                    <article>
+                        <div>
+                            <h4 class="title is-4">D3 Shape Practice</h4>
+                            <p>In this post we go over basic shape animations possible using D3. Largely based off of a D3 In-Depth example, with animations to expand and differentiate. Moves toward D3 syntax.</p>
+                        </div>
+                        <p class="eventText">Click for demo↓</p>
+                        <svg class="preview" id="chart3"></svg>
+                    </article>
+                </a>
+                <br>
+                <a href="test4.html" class="block">
+                    <article>
+                        <div>
+                            <h4 class="title is-4">D3 Axis Practice</h4>
+                            <p>In this post we go over basic axis construction and animations using D3, again based off D3 In-Depth with animations to expand and differentiate. Introduction of param-object function design.</p>
+                        </div>
+                        <p class="eventText">Click for demo↓</p>
+                        <svg class="preview" id="chart4"></svg>
+                    </article>
+                </a>                
+            </div>
+        </section>
+    </main>
+    <script src="js/brand2.js"></script>
+    <script src="js/index.js"></script>
+</body>
+</html>
