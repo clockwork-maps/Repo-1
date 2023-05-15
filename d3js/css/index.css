@@ -2,7 +2,7 @@ article > div  {
     max-width: 60ch;
     color: #4a4a4a;
 }
-a {
+.container > a {
     position: relative;
     width: 800px;
     margin-inline: auto;
@@ -25,7 +25,7 @@ a {
     transition: opacity .5s linear;
     pointer-events: none;
 }
-a:hover{
+.container > a:hover{
     margin-top: 1vmin;
     box-shadow: -6px 4px 3.75px 2.8px rgba(0,0,0,0.2);
 }
