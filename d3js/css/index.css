@@ -2,7 +2,13 @@ article > div  {
     max-width: 60ch;
     color: #4a4a4a;
 }
-.container > a {
+.preview{
+    position: absolute;
+    border: 1px solid rgba(0,0,0,0.1);
+    transition: border .5s, background-color .5s;
+}
+.block{ 
+    display: block;
     position: relative;
     width: 800px;
     margin-inline: auto;
@@ -12,12 +18,6 @@ article > div  {
     transition: all .5s;
     color: #4a4a4a;
 }
-.preview{
-    position: absolute;
-    border: 1px solid rgba(0,0,0,0.1);
-    transition: border .5s, background-color .5s;
-}
-.block{ display: block;}
 .eventText{
     position: absolute;
     opacity: 0;
@@ -25,7 +25,7 @@ article > div  {
     transition: opacity .5s linear;
     pointer-events: none;
 }
-.container > a:hover{
+.block:hover{
     margin-top: 1vmin;
     box-shadow: -6px 4px 3.75px 2.8px rgba(0,0,0,0.2);
 }
@@ -33,4 +33,13 @@ article:hover > .preview{ border: 2px dashed rgba(0,0,0,0.1)}
 article:hover > .eventText{ opacity: 1;}
 .preview.demo:hover{
     background-color: #fdfd96;
+}
+@media(width < 1000px){
+    .block{
+        width: 95%;
+        border-top: 1px solid rgba(0,0,0,0.1);
+    }
+    article > div {
+        max-width: 80%;
+    }
 }
