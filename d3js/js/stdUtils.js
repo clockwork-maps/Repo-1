@@ -71,9 +71,9 @@ function LCNLogo(target){
     let ctln = ctbounds.width;    
     let ctht = ctbounds.height;
     let leg = Math.min(ctln, ctht);
-    let xpad = ctln - ctht > 0 ? (ctln - ctht)/2 : 0;
-    let ypad = ctht - ctln > 0 ? (ctht - ctln)/2 : 0;
     let bsize = (leg/11);
+    let xpad = ctln - ctht > 0 ? (ctln - ctht)/2 : bsize*.5;
+    let ypad = ctht - ctln > 0 ? (ctht - ctln)/2 : bsize*.5;
     let yellowList = ['0 0','0 1','1 0','1 1','5 0','5 1'];
     let orangeList = ['2 0','2 1','5 2','5 3','6 2','6 3'];
     let pinkList = ['1 4','4 2'];
@@ -95,7 +95,7 @@ function LCNLogo(target){
         let rx = i * bsize + xpad;
         let ry = j * bsize + ypad;
         let box = chart.append('rect');
-        box.attr('transform', `translate(${rx},${ry})`).attr('width',bsize).attr('height',bsize).attr('fill',fillers[p]);
+        box.attr('transform', `translate(${rx},${ry})`).attr('width',bsize).attr('height',bsize).attr('fill',fillers[p]).classed('pixel', true);
     }
 }
 function pieChart(obj){

@@ -1,6 +1,4 @@
-.anchor{
-    position: relative;
-}
+.anchor{position: relative;}
 .anchor > span:first-of-type{
     position: absolute;
     top: -75px;
@@ -19,6 +17,7 @@
     height: 200px;
     border: 1px solid rgba(0,0,0,0.1);
 }
+.pixel{margin: -4px;}
 nav{
     position: fixed !important;
     top: 0 !important;

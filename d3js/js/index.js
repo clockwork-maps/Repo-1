@@ -8,9 +8,12 @@ preview.each(function(){
     parent.style.padding = `${pmin}px`;
     if(pbounds.width >= 800) tsvg.style('height', `${8*pmin}px`).style('width', `${12*pmin}px`).style('top', `${pmin*2}px`).style('right', `${pmin}px`);
     else{
-        tsvg.style('height', `${8*pmin}px`).style('width', `${pbounds.width-pmin*2}px`).style('bottom', `${pmin}px`);
+        let cwidth = pbounds.width-pmin*2;
+        let cheight = cwidth*(2/3);
+        tsvg.style('height', `${cheight}px`).style('width', `${cwidth}px`).style('bottom', `${pmin}px`);
         let block = parent.parentElement;
-        block.style.height = `${pbounds.height+13*pmin}px`; 
+        let hrefresh = d3.select(this).node().parentElement.getBoundingClientRect().height;
+        block.style.height = `${hrefresh+cheight+pmin*2}px`; 
         mobBool = true;
     }
     
@@ -26,8 +29,7 @@ eventText.each(function(){
         let svg = parent.querySelector('.preview');
         let bottom = Number(svg.style.bottom.slice(0,-2));
         let height = Number(svg.style.height.slice(0,-2));
-        console.log(height + bottom);
-        ttext.style('bottom', `${height+5}px`).style('opacity','1')
+        ttext.style('bottom', `${height+5}px`);
     }
 })
 barChart({target:'#chart1',target2:'bars', dNum:8});
