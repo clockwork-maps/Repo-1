@@ -6,7 +6,7 @@ preview.each(function(){
     let pbounds = parent.getBoundingClientRect();
     let pmin = Math.min(pbounds.width, pbounds.height)/10;
     parent.style.padding = `${pmin}px`;
-    if(pbounds.width > 1000) tsvg.style('height', `${8*pmin}px`).style('width', `${12*pmin}px`).style('top', `${pmin*2}px`).style('right', `${pmin}px`);
+    if(pbounds.width >= 800) tsvg.style('height', `${8*pmin}px`).style('width', `${12*pmin}px`).style('top', `${pmin*2}px`).style('right', `${pmin}px`);
     else{
         tsvg.style('height', `${8*pmin}px`).style('width', `${pbounds.width-pmin*2}px`).style('bottom', `${pmin}px`);
         let block = parent.parentElement;
@@ -21,7 +21,7 @@ eventText.each(function(){
     let parent = ttext.node().parentElement;
     let pbounds = parent.getBoundingClientRect();
     let pmin = Math.min(pbounds.width, pbounds.height)/10;
-    if(pbounds.width > 1000) ttext.style('top', `${pmin*.1}px`).style('right',`${pmin*4}px`);
+    if(pbounds.width >= 800) ttext.style('top', `${pmin*.1}px`).style('right',`${pmin*4}px`);
     else {
         let svg = parent.querySelector('.preview');
         let bottom = Number(svg.style.bottom.slice(0,-2));
