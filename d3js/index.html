@@ -4,8 +4,9 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>D3 blog</title>
+    <title>D3 blog</title>    
     <link rel="stylesheet" href="css/bulma.min.css">
+    <link rel="stylesheet" href="css/nav.css">
     <link rel="stylesheet" href="css/svg.css">
     <link rel="stylesheet" href="css/axes.css">
     <link rel="stylesheet" href="css/index.css">
@@ -14,7 +15,13 @@
 </head>
 <body>
     <nav class="navbar has-background-light" role="navigation" aria-label="main navigation">
-        <div class="navbar-brand"></div>
+        <div class="navbar-brand">
+            <a id="burger" role="button" class="navbar-burger" data-target="mobMenu" aria-label="menu" aria-expanded="false">
+                <span aria-hidden="true"></span>
+                <span aria-hidden="true"></span>
+                <span aria-hidden="true"></span>
+            </a>
+        </div>
         <div class="navbar-menu">
             <div class="navbar-start">
                 <div class="navbar-item has-dropwdown is-hoverable">
@@ -39,12 +46,20 @@
         </div>
     </nav>
     <main>        
+        <article class="mobile-menu" style="display: none;">
+            <a href="" class="mobile-item">Other Blogs: Pending...</a>
+            <a href="https://www.d3indepth.com/" target="_blank" class="navbar-item">Resources: D3 In-Depth</a>
+            <a href="https://observablehq.com/@d3/gallery" target="_blank" class="navbar-item">Resources: D3 Example Gallery</a>
+            <a href="https://observablehq.com/collection/@d3/d3-tile" target="_blank" class="navbar-item">Resources: D3 Tile Gallery</a>
+            <a href="https://d3-graph-gallery.com/" target="_blank" class="navbar-item">Resources: Graph Gallery</a>
+        </article>
         <section class="hero is-small is-primary">
             <div class="hero-body">
                 <p class="title">D3 Dev Blog Index</p>
                 <p class="subtitle">entries, summaries, and previews</p>
             </div>
         </section>
+        
         <section class="section mt-0">
             <div class="container content">
                 <a href="test1.html" class="block">

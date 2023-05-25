@@ -6,6 +6,7 @@ function nvcolor(){
 }
 let brand = d3.select('.navbar-brand');
 let bsvg = brand.append('svg');
+brand.node().insertBefore(bsvg.node(),brand.node().firstChild);
 let tdefs = bsvg.append('defs');
 let pattern = tdefs.append('pattern');
 pattern.attr('id', 'pattern1').attr('width','10').attr('height','10').attr('patternUnits','userSpaceOnUse').attr('patternTransform','rotate(60)');
@@ -58,3 +59,9 @@ function cDrift(){
 }
 cDrift();
 setInterval(cDrift, 5000);
+let burger = document.getElementById('burger');
+burger.addEventListener('click', function(){
+    let bmenu = document.querySelector('.mobile-menu');
+    if(bmenu.style.display == 'none') bmenu.style.display = 'block';
+    else bmenu.style.display = 'none';
+});
