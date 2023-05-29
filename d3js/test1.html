@@ -13,7 +13,13 @@
 </head>
 <body onload="init()">
     <nav class="navbar has-background-light" role="navigation" aria-label="main navigation">
-        <div class="navbar-brand"></div>
+        <div class="navbar-brand">
+            <a id="burger" role="button" class="navbar-burger" data-target="mobMenu" aria-label="menu" aria-expanded="false">
+                <span aria-hidden="true"></span>
+                <span aria-hidden="true"></span>
+                <span aria-hidden="true"></span>
+            </a>
+        </div>
         <div class="navbar-menu">
             <div class="navbar-start">
                 <div class="navbar-item has-dropwdown is-hoverable">
@@ -40,9 +46,19 @@
             </div>
         </div>
     </nav>
+    <article class="mobile-menu" style="display: none;">
+        <a href="index.html" class="navbar-item">Index</a>        
+        <a href="test2.html" class="navbar-item">Drawing a Logo via D3</a>
+        <a href="test3.html" class="navbar-item">D3 Shape Practice</a>
+        <a href="test4.html" class="navbar-item">D3 Axis Practice</a>
+        <a href="https://www.d3indepth.com/" target="_blank" class="navbar-item">Resources: D3 In-Depth</a>
+        <a href="https://observablehq.com/@d3/gallery" target="_blank" class="navbar-item">Resources: D3 Example Gallery</a>
+        <a href="https://observablehq.com/collection/@d3/d3-tile" target="_blank" class="navbar-item">Resources: D3 Tile Gallery</a>
+        <a href="https://d3-graph-gallery.com/" target="_blank" class="navbar-item">Resources: Graph Gallery</a>
+    </article>
     <section class="section">
         <div id="anchor" class="container content"></div>
     </section>
-    <script src="js/brand.js"></script>
+    <script src="js/brand2.js"></script>
 </body>
 </html>
