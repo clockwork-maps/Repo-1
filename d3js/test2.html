@@ -28,6 +28,7 @@
                         <a href="test1.html" class="navbar-item">First Post: D3 Basics</a>
                         <a href="test3.html" class="navbar-item">D3 Shape Practice</a> 
                         <a href="test4.html" class="navbar-item">D3 Axis Practice</a>                   
+                        <a href="classes1.html" class="navbar-item">Introduction to Custom D3 Classes</a>
                     </div>
                 </div>
             </div>
@@ -49,7 +50,8 @@
         <a href="index.html" class="navbar-item">Index</a>
         <a href="test1.html" class="navbar-item">First Post: D3 Basics</a>
         <a href="test3.html" class="navbar-item">D3 Shape Practice</a> 
-        <a href="test4.html" class="navbar-item">D3 Axis Practice</a>  
+        <a href="test4.html" class="navbar-item">D3 Axis Practice</a>
+        <a href="classes1.html" class="navbar-item">Introduction to Custom D3 Classes</a>  
         <a href="https://www.d3indepth.com/" target="_blank" class="navbar-item">Resources: D3 In-Depth</a>
         <a href="https://observablehq.com/@d3/gallery" target="_blank" class="navbar-item">Resources: D3 Example Gallery</a>
         <a href="https://observablehq.com/collection/@d3/d3-tile" target="_blank" class="navbar-item">Resources: D3 Tile Gallery</a>
@@ -57,10 +59,12 @@
     </article>
     <section class="section">
         <div class="container content">
-            <h2 class="title is-2 has-text-centered">Logo Design</h2>
-            <p>For the second D3 exercise, we'll try our hand at logo design. We're not going to be desinging a new logo, but rather recreating the logo of Norrköping (my city). The logo didn't come out quite like you might see it <a href="https://www.norrkoping.se/images/18.5ff942e1184b3f255e22d141/1485331297688/Let's%20create%20Norrk%C3%B6ping.png" target="_blank">here</a> the colors came out close enough, I think, to be indistinguishable without the real copy right next to you.</p>
+            <h2 class="title is-2 diagonal">Logo Design</h2>
+            <p class="intro">For the second D3 exercise, we'll try our hand at logo design. We're not going to be desinging a new logo, but rather recreating the logo of Norrköping (my city). The logo didn't come out quite like you might see it <a href="https://www.norrkoping.se/images/18.5ff942e1184b3f255e22d141/1485331297688/Let's%20create%20Norrk%C3%B6ping.png" target="_blank">here</a> the colors came out close enough, I think, to be indistinguishable without the real copy right next to you.</p>
             <p>The logo will be followed by a preformatted section showing how one draws the logo. I'll leave in some functions I used when drawing the logo in the preformatted section, but if one inspects the source code of the page (or indeed, looks at the image) one can see those functions are no longer there.</p>
-            <svg id="logo"></svg>
+            <p>Update: formatting of the function changed significantly to better accomodate mobile.</p>
+            <div class="svgcontainer"><svg id="logo" class="svgstd"></svg></div>
+            <br>
             <pre>
 let logo = d3.select('#logo');
 logo.style('width', '400px').style('height', '400px').style('border', '1px solid rgba(0,0,0,0.1)').style('margin-left', '30%').style('margin-right', '30%');

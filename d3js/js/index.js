@@ -51,3 +51,5 @@ d3.select('#chart4').on('click', function(event){
     scales({target: '#chart4', target2: 'bAxis', stroke: 'red', posyscalar: .7, posxscalar: xscalar, tnum: 2, barscalar:.6, duration: 750});
     scales({target: '#chart4', target2: 'lAxis', stroke: 'red', posyscalar: .2, posxscalar: xscalar, tnum: 2, barscalar:.5, direction: 'left', duration: 750});
 })
+scales({target: '#chart5', target2: 'bAxis', stroke: 'red', posyscalar: .7, posxscalar: xscalar, tnum: 4, barscalar:.6, dmax: 200});
+scales({target: '#chart5', target2: 'lAxis', stroke: 'red', posyscalar: .2, posxscalar: xscalar, tnum: 4, barscalar:.5, direction: 'left', dmax: 50});

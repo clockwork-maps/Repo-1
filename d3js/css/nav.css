@@ -36,3 +36,29 @@ section{ margin-top: 5vh;}
         border-bottom: 1px solid rgba(0,0,0,0.1);
     }
 }
+.intro::first-letter{
+    font-size: 1.25rem;
+    font-weight: 550;
+}
+.diagonal{
+    position: relative;
+    isolation: isolate;
+    width: max-content;
+    margin-inline: auto;
+}
+.diagonal::after{
+    content: '';
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    transform: skewY(-1deg);
+    background-image: radial-gradient(#FFD35B, #FFDE85, #FFE8AB);
+}
+.diagonal::before{
+    content: '';
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    transform: skewY(1deg);
+    border: 2px solid #FFD35B;
+}

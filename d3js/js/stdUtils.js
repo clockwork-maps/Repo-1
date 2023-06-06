@@ -146,7 +146,7 @@ function scales(obj){
     let dmax = obj.dmax || Math.round(getRA(30,10000));
     let numScale = ['linear','sqrt','log'].indexOf(scaleSelect) + 1;
     let domArray = obj.domain || ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday']
-    let barDomain = numScale ? [dmin, dmax] : domArray;
+    let barDomain = numScale > 0 ? [dmin, dmax] : domArray;
     let barscalar = obj.barscalar || .8;
     let tranD = obj.duration || 0;
     let chart = d3.select(target);
