@@ -6,14 +6,15 @@ preview.each(function(){
     let pbounds = parent.getBoundingClientRect();
     let pmin = Math.min(pbounds.width, pbounds.height)/10;
     parent.style.padding = `${pmin}px`;
-    if(pbounds.width >= 800) tsvg.style('height', `${8*pmin}px`).style('width', `${12*pmin}px`).style('top', `${pmin*2}px`).style('right', `${pmin}px`);
+    console.log(window.innerWidth);
+    if(window.innerWidth >= 1024) tsvg.style('height', `${8*pmin}px`).style('width', `${12*pmin}px`).style('top', `${pmin*2}px`).style('right', `${pmin}px`);
     else{
         let cwidth = pbounds.width-pmin*2;
         let cheight = cwidth*(2/3);
         tsvg.style('height', `${cheight}px`).style('width', `${cwidth}px`).style('bottom', `${pmin}px`);
         let block = parent.parentElement;
         let hrefresh = d3.select(this).node().parentElement.getBoundingClientRect().height;
-        block.style.height = `${hrefresh+cheight+pmin*2}px`; 
+        block.style.height = `${hrefresh*1.2+cheight+pmin*2}px`; 
         mobBool = true;
     }
     
@@ -24,10 +25,10 @@ eventText.each(function(){
     let parent = ttext.node().parentElement;
     let pbounds = parent.getBoundingClientRect();
     let pmin = Math.min(pbounds.width, pbounds.height)/10;
-    if(pbounds.width >= 800) ttext.style('top', `${pmin*.1}px`).style('right',`${pmin*4}px`);
+    if(window.innerWidth >= 1024) ttext.style('top', `${pmin*.1}px`).style('right',`${pmin*4}px`);
     else {
         let svg = parent.querySelector('.preview');
-        let bottom = Number(svg.style.bottom.slice(0,-2));
+        // let bottom = Number(svg.style.bottom.slice(0,-2));
         let height = Number(svg.style.height.slice(0,-2));
         ttext.style('bottom', `${height+5}px`);
     }

@@ -6,7 +6,6 @@
 .block{ 
     display: block;
     position: relative;
-    width: 800px;
     margin-inline: auto;
     border-bottom: 1px solid rgba(0,0,0,0.1);
     margin-bottom: 1vmin;
@@ -25,6 +24,7 @@
     background-color: #fdfd96;
 }
 @media(width > 1024px){
+    .block{width: 800px;}
     article > div  {max-width: 60ch;}
     .block:hover{
         margin-top: 1vmin;
