@@ -11,7 +11,8 @@ section{ margin-top: 5vh;}
     top: -75px;
 }
 .navbar-burger{margin-right: calc(50% - 26px);}
-@media(width > 1024px){    
+@media(width > 1024px){  
+    .diagonal{width: max-content}  
 }
 @media(width < 1024px){
     main{position: relative;}
@@ -35,6 +36,7 @@ section{ margin-top: 5vh;}
     .mobile-menu > a:not(:last-of-type){
         border-bottom: 1px solid rgba(0,0,0,0.1);
     }
+    /* .diagonal{width: 95vw;} */
 }
 .intro::first-letter{
     font-size: 1.25rem;
@@ -43,7 +45,6 @@ section{ margin-top: 5vh;}
 .diagonal{
     position: relative;
     isolation: isolate;
-    width: max-content;
     margin-inline: auto;
 }
 .diagonal::after{
